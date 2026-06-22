@@ -41,6 +41,7 @@ export default function NewsCarousel() {
   const [error, setError] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsToShow, setCardsToShow] = useState(3);
+  const [isPaused, setIsPaused] = useState(false);
 
   const carouselRef = useRef<HTMLDivElement>(null);
 
@@ -54,6 +55,20 @@ export default function NewsCarousel() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    if (isPaused || articles.length === 0) return;
+    const interval = window.setInterval(() => {
+      setCurrentIndex((prev) => {
+        const next = prev + 1;
+        return next >= Math.max(1, articles.length - cardsToShow + 1)
+          ? 0
+          : next;
+      });
+    }, 5000);
+
+    return () => window.clearInterval(interval);
+  }, [isPaused, articles.length, cardsToShow]);
 
   const fetchNews = async () => {
     setLoading(true);
@@ -77,16 +92,26 @@ export default function NewsCarousel() {
     fetchNews();
   }, []);
 
+  const slidesCount = Math.max(1, articles.length - cardsToShow + 1);
+
   const nextSlide = () => {
-    if (currentIndex < articles.length - cardsToShow) {
+    if (currentIndex < slidesCount - 1) {
       setCurrentIndex((prev) => prev + 1);
+    } else {
+      setCurrentIndex(0);
     }
   };
 
   const prevSlide = () => {
     if (currentIndex > 0) {
       setCurrentIndex((prev) => prev - 1);
+    } else {
+      setCurrentIndex(slidesCount - 1);
     }
+  };
+
+  const togglePause = () => {
+    setIsPaused((prev) => !prev);
   };
 
   if (loading) {
@@ -169,30 +194,31 @@ export default function NewsCarousel() {
           </div>
 
           {/* Nav Buttons */}
-          <div className="flex space-x-3 shrink-0">
+          <div className="flex items-center gap-3 shrink-0">
             <button
               onClick={prevSlide}
-              disabled={currentIndex === 0}
               aria-label="Previous slide"
-              className={`p-3 border rounded-full transition-all ${
-                currentIndex === 0
-                  ? "border-gray-200 text-gray-300 cursor-not-allowed"
-                  : "border-gray-300 text-gray-700 hover:text-[#AA0433] hover:border-[#AA0433] bg-white"
-              }`}
+              className="p-3 border rounded-full transition-all border-gray-300 text-gray-700 hover:text-[#AA0433] hover:border-[#AA0433] bg-white"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
             <button
+              onClick={togglePause}
+              aria-label={isPaused ? "Resume autoplay" : "Pause autoplay"}
+              className="p-3 border rounded-full transition-all border-gray-300 text-gray-700 hover:text-[#AA0433] hover:border-[#AA0433] bg-white"
+            >
+              {isPaused ? (
+                <span className="text-sm">▶</span>
+              ) : (
+                <span className="text-sm">⏸</span>
+              )}
+            </button>
+            <button
               onClick={nextSlide}
-              disabled={currentIndex >= articles.length - cardsToShow}
               aria-label="Next slide"
-              className={`p-3 border rounded-full transition-all ${
-                currentIndex >= articles.length - cardsToShow
-                  ? "border-gray-200 text-gray-300 cursor-not-allowed"
-                  : "border-gray-300 text-gray-700 hover:text-[#AA0433] hover:border-[#AA0433] bg-white"
-              }`}
+              className="p-3 border rounded-full transition-all border-gray-300 text-gray-700 hover:text-[#AA0433] hover:border-[#AA0433] bg-white"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -209,6 +235,8 @@ export default function NewsCarousel() {
             style={{
               transform: `translateX(-${currentIndex * (100 / cardsToShow)}%)`,
             }}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
           >
             {articles.map((article) => (
               <div
@@ -278,6 +306,22 @@ export default function NewsCarousel() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Slide Indicators */}
+        <div className="mt-6 flex justify-center gap-2" role="tablist" aria-label="News carousel slides">
+          {Array.from({ length: Math.max(1, articles.length - cardsToShow + 1) }).map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              onClick={() => setCurrentIndex(index)}
+              aria-label={`Go to slide ${index + 1}`}
+              aria-selected={currentIndex === index}
+              className={`h-2 w-8 rounded-full transition-all ${
+                currentIndex === index ? "bg-[#AA0433]" : "bg-gray-300 hover:bg-gray-400"
+              }`}
+            />
+          ))}
         </div>
 
       </div>
