@@ -43,7 +43,7 @@ export default function RoadTo() {
         {/* Left: Image */}
         <div className="flex-shrink-0 w-[420px]">
           <img
-            src="/rectangle 6.png"
+            src="/Rectangle 6.png"
             alt="Law Society"
             className="w-full h-auto object-cover"
           />
