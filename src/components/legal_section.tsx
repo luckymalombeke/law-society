@@ -34,7 +34,7 @@ export default function LegalSection() {
         </span>
         <div className="flex-1 bg-[#927642] px-6 py-3 text-white text-sm font-semibold flex items-center justify-between">
           <span>Alternative Dispute Resolution Schemes</span>
-          <img src="/frame.png" alt="arrow" className="w-6 h-6 object-contain" />
+          <img src="/Frame.png" alt="arrow" className="w-6 h-6 object-contain" />
         </div>
       </div>
 
