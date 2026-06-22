@@ -47,33 +47,35 @@ export default function WhatWeDo() {
     <section className="pt-20 pb-0 bg-white">
       <div className="w-full mx-0 px-0">
         {/* Section Header */}
-        <div className="text-center md:text-right mb-12">
-          <div className="flex items-center justify-center md:pr-230 space-x-2 text-maroon font-bold text-xs uppercase tracking-widest mb-3">
-            <Image
-              src="/tanda kutip dua.png"
-              alt="Tanda Kutip"
-              width={20}
-              height={20}
-              className="object-contain"
-              style={{ width: "auto", height: "20px" }}
-            />
-            <div className="border-b-2 border-maroon pb-0.5">
+        <div className="text-left md:text-right mb-12">
+          <div className="flex flex-col md:flex-row md:justify-end items-start md:items-center gap-3 mb-4">
+            <div className="flex items-center gap-2 text-maroon font-bold uppercase tracking-widest">
               <Image
-                src="/What We Do.png"
-                alt="What We Do"
-                width={100}
-                height={28}
+                src="/tanda kutip dua.png"
+                alt="Tanda Kutip"
+                width={20}
+                height={20}
                 className="object-contain"
-                style={{ width: "auto", height: "28px" }}
+                style={{ width: "auto", height: "20px" }}
               />
+              <div className="border-b-2 border-maroon pb-0.5 text-sm">
+                <Image
+                  src="/What We Do.png"
+                  alt="What We Do"
+                  width={100}
+                  height={28}
+                  className="object-contain"
+                  style={{ width: "auto", height: "28px" }}
+                />
+              </div>
             </div>
           </div>
 
-          <h2 className="text-[54px] font-normal leading-[100%] tracking-[0%] uppercase font-sans text-gray-900 md:pr-53">
+          <h2 className="text-[42px] md:text-[54px] font-normal leading-[1.05] tracking-[0%] uppercase font-sans text-gray-900 md:pr-53 max-w-xl">
             WE CARRY OUT VARIOUS STATUTORY FUNCTIONS
           </h2>
 
-          <div className="mt-4 text-gray-600 max-w-3xl md:ml-48">
+          <div className="mt-4 text-gray-600 max-w-3xl md:ml-auto">
             <Image
               src="/teks what we do.png"
               alt="What We Do Text"
@@ -85,7 +87,7 @@ export default function WhatWeDo() {
         </div>
 
         {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 rounded-none overflow-hidden">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-0 rounded-none overflow-hidden">
           {cards.map((card) => {
             const isStyledCard = card.id !== 'firm-closure';
 
@@ -93,7 +95,7 @@ export default function WhatWeDo() {
               return (
                 <div
                   key={card.id}
-                  className="relative flex flex-col justify-between min-h-[350px] overflow-hidden group"
+                  className="relative flex flex-col justify-between text-gray-900 min-h-[300px] overflow-hidden group"
                 >
                   {/* Background image */}
                   <div className="absolute inset-0 z-0 opacity-100">
