@@ -87,7 +87,7 @@ export default function WhatWeDo() {
         </div>
 
         {/* 4 Cards Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-0 rounded-none overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 rounded-none overflow-hidden">
           {cards.map((card) => {
             const isStyledCard = card.id !== 'firm-closure';
 
@@ -95,7 +95,7 @@ export default function WhatWeDo() {
               return (
                 <div
                   key={card.id}
-                  className="relative flex flex-col justify-between text-gray-900 min-h-[300px] overflow-hidden group"
+                  className="relative flex flex-col justify-between text-gray-900 min-h-[350px] overflow-hidden group"
                 >
                   {/* Background image */}
                   <div className="absolute inset-0 z-0 opacity-100">
