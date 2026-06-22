@@ -35,14 +35,14 @@ export default function Navbar() {
       {/* Backdrop */}
       {open && (
         <div
-          className="absolute inset-0 z-40 bg-black/20"
+          className="fixed inset-0 z-40 bg-black/20"
           onClick={() => setOpen(false)}
           aria-hidden="true"
         />
       )}
 
-      {/* Navbar container — sesuai tinggi Hero section */}
-      <div className="absolute right-0 top-0 z-50 flex flex-row-reverse h-full md:h-[900px] pointer-events-none">
+      {/* Navbar container — fixed overlay for mobile and desktop */}
+      <div className="fixed inset-0 z-50 flex flex-row-reverse pointer-events-none">
 
         {/* Toggle strip */}
         <div className="pointer-events-auto h-full flex flex-col justify-between items-center w-[52px] pt-4 pb-4 bg-[#404040]">
@@ -79,7 +79,7 @@ export default function Navbar() {
           <nav
             id="nav-menu"
             aria-label="Main navigation"
-            className="pointer-events-auto h-full w-[900px] bg-[#404040] flex flex-col"
+            className="pointer-events-auto h-full w-full max-w-[420px] md:w-[900px] bg-[#404040] flex flex-col"
           >
             {/* Top bar */}
             <div className="relative flex justify-end items-center px-6 pt-4 pb-2 gap-3">

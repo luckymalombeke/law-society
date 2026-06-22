@@ -264,7 +264,7 @@ export default function NewsCarousel() {
                       >
                         More Detail
                         <Image
-                          src="/vector(3).png"
+                          src="/Vector(3).png"
                           alt="arrow"
                           width={24}
                           height={24}
