@@ -22,7 +22,13 @@ export default function LegalSection() {
         <span className="bg-[#404040] text-white font-['Oswald'] text-sm px-4 py-3 min-w-[90px] text-center shrink-0">
           Lawyer
         </span>
-        <div className="flex-1 bg-[#E8E8E8] px-6 py-3 text-[#252527] text-sm">
+        <div className="flex-1 bg-[#E8E8E8] px-6 py-3 text-[#252527] text-sm" style={{
+          fontFamily: "Montserrat, sans-serif",
+          fontWeight: 400,
+          fontSize: "18px",
+          lineHeight: "30px",
+          letterSpacing: "0%"
+        }}>
           Feedback on Law Reforms
         </div>
       </div>
@@ -32,7 +38,13 @@ export default function LegalSection() {
         <span className="bg-[#404040] text-white font-['Oswald'] text-sm px-4 py-3 min-w-[90px] text-center shrink-0">
           Public
         </span>
-        <div className="flex-1 bg-[#927642] px-6 py-3 text-white text-sm font-semibold flex items-center justify-between">
+        <div className="flex-1 bg-[#927642] px-6 py-3 text-white text-sm font-semibold flex items-center justify-between" style={{
+          fontFamily: "Montserrat, sans-serif",
+          fontWeight: 400,
+          fontSize: "18px",
+          lineHeight: "30px",
+          letterSpacing: "0%"
+        }}>
           <span>Alternative Dispute Resolution Schemes</span>
           <img src="/Frame.png" alt="arrow" className="w-6 h-6 object-contain" />
         </div>
@@ -44,8 +56,13 @@ export default function LegalSection() {
         <span className="bg-[#404040] text-white font-['Oswald'] text-sm px-4 py-3 min-w-[90px] text-center shrink-0">
           Lawyer
         </span>
-        <div className="flex-1 bg-[#background: #E5E8EB;
-] px-6 py-3 text-[#252527] text-sm">
+        <div className="flex-1 bg-[#E5E8EB] px-6 py-3 text-[#252527] text-sm" style={{
+          fontFamily: "Montserrat, sans-serif",
+          fontWeight: 400,
+          fontSize: "18px",
+          lineHeight: "30px",
+          letterSpacing: "0%"
+        }}>
           Members' Support Schemes
         </div>
       </div>
@@ -55,8 +72,13 @@ export default function LegalSection() {
         <span className="bg-[#404040] text-white font-['Oswald'] text-sm px-4 py-3 min-w-[90px] text-center shrink-0">
           Lawyer
         </span>
-        <div className="flex-1 bg-[background: #E5E8EB;
-] px-6 py-3 text-[#252527] text-sm">
+        <div className="flex-1 bg-[#E5E8EB] px-6 py-3 text-[#252527] text-sm" style={{
+          fontFamily: "Montserrat, sans-serif",
+          fontWeight: 400,
+          fontSize: "18px",
+          lineHeight: "30px",
+          letterSpacing: "0%"
+        }}>
           Future Lawyering Research Portal
         </div>
       </div>
