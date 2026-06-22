@@ -1,4 +1,6 @@
 
+"use client";
+
 import { useEffect, useRef } from "react";
 import Hero from "@/components/Hero";
 import WhatWeDo from "@/components/WhatWeDo";
